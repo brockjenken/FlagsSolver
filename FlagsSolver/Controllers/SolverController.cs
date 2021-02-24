@@ -35,8 +35,11 @@ namespace FlagsSolver.Controllers
 
             Board solvedBoard = BoardSolver.SolveBoard(board);
 
+            // Editing this link to test deployment
+            List<string> tiles = TileUtil.SerialzeTiles(solvedBoard.Tiles);
+            tiles.Add("TEST");
 
-            return TileUtil.SerialzeTiles(solvedBoard.Tiles);
+            return tiles;
         }
     }
 }
