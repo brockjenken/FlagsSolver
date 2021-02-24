@@ -34,12 +34,8 @@ namespace FlagsSolver.Controllers
                 TileUtil.DeserialzeTiles(request.Board, request.Height, request.Width));
 
             Board solvedBoard = BoardSolver.SolveBoard(board);
-
-            // Editing this link to test deployment
-            List<string> tiles = TileUtil.SerialzeTiles(solvedBoard.Tiles);
-            tiles.Add("TEST");
-
-            return tiles;
+            
+            return TileUtil.SerialzeTiles(solvedBoard.Tiles);
         }
     }
 }
