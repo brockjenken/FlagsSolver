@@ -14,7 +14,6 @@ namespace FlagsSolver.Service
             return board;
         }
 
-
         // private static int ScanBoardForFlags(Board board)
         // {
         //     Enumerable.Range(0, board.Width).ToList().ForEach(x => {

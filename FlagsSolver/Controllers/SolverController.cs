@@ -13,7 +13,7 @@ using Microsoft.Extensions.Logging;
 namespace FlagsSolver.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("[controller]")]
     public class SolverController : ControllerBase
     {
         private readonly ILogger<SolverController> _logger;
@@ -34,7 +34,7 @@ namespace FlagsSolver.Controllers
                 TileUtil.DeserialzeTiles(request.Board, request.Height, request.Width));
 
             Board solvedBoard = BoardSolver.SolveBoard(board);
-            
+
             return TileUtil.SerialzeTiles(solvedBoard.Tiles);
         }
     }
