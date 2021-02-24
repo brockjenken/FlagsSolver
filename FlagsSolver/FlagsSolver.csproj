@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="Properties %28copy%29\launchSettings.json"/>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\"/>
+    <Folder Include="Util\"/>
+    <Folder Include="DTOs\"/>
+    <Folder Include="Service\"/>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0"/>
+  </ItemGroup>
+</Project>
