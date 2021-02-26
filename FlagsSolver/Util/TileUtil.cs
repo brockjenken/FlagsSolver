@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using FlagsSolver.Models;
@@ -23,7 +22,6 @@ namespace FlagsSolver.Util
                 { "7", (int x, int y) => new Tile(TileType.NUMBER, 7, true, x, y)},
                 { "8", (int x, int y) => new Tile(TileType.NUMBER, 8, true, x, y)},
             };
-            // 0 0, 0 1, 0 2, 0 3, 0 4, 1 0, 1 1, 1 2, 1 3, 1 4, 2 0 
 
         public static List<Tile> DeserialzeTiles(List<string> rawTiles, int height, int width)
         {
