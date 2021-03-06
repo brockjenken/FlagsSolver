@@ -20,14 +20,10 @@ namespace FlagsSolver
         {
             services.AddControllers().AddNewtonsoftJson();
 
-            services.AddCors(options =>
-            {
-            options.AddPolicy("Policy1",
-                builder =>
-                {
-                    builder.WithOrigins("*");
-                });
-        });
+            services.AddCors(c =>  
+            {  
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());  
+            });  
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,7 +40,7 @@ namespace FlagsSolver
 
             app.UseAuthorization();
 
-            app.UseCors();
+            app.UseCors(options => options.AllowAnyOrigin());  
 
             app.UseEndpoints(endpoints =>
             {
