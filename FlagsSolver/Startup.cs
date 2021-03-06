@@ -19,6 +19,15 @@ namespace FlagsSolver
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers().AddNewtonsoftJson();
+
+            services.AddCors(options =>
+            {
+            options.AddPolicy("Policy1",
+                builder =>
+                {
+                    builder.WithOrigins("*");
+                });
+        });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,6 +43,8 @@ namespace FlagsSolver
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {
