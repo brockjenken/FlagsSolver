@@ -22,7 +22,7 @@ namespace FlagsSolver
 
             services.AddCors(c =>  
             {  
-                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());  
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyHeader());  
             });  
         }
 
@@ -40,7 +40,7 @@ namespace FlagsSolver
 
             app.UseAuthorization();
 
-            app.UseCors(options => options.AllowAnyOrigin());  
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyHeader());  
 
             app.UseEndpoints(endpoints =>
             {
