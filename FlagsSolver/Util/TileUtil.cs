@@ -11,18 +11,18 @@ namespace FlagsSolver.Util
     {
         private static readonly Dictionary<string, Func<int, int, Tile>> DESERIALIZE_MAP = new Dictionary<string, Func<int, int, Tile>>
             {
-                { "A", (int x, int y) => new Tile(TileType.FLAG, null, false, x, y)},
-                { "B", (int x, int y) => new Tile(TileType.FLAG, null,  false, x, y)},
-                { "null", (int x, int y) => new Tile(TileType.UNKNOWN, null, false, x, y)},
-                { "0", (int x, int y) => new Tile(TileType.NUMBER, 0, false, x, y)},
-                { "1", (int x, int y) => new Tile(TileType.NUMBER, 1, false, x, y)},
-                { "2", (int x, int y) => new Tile(TileType.NUMBER, 2, false, x, y)},
-                { "3", (int x, int y) => new Tile(TileType.NUMBER, 3, false, x, y)},
-                { "4", (int x, int y) => new Tile(TileType.NUMBER, 4, false, x, y)},
-                { "5", (int x, int y) => new Tile(TileType.NUMBER, 5, false, x, y)},
-                { "6", (int x, int y) => new Tile(TileType.NUMBER, 6, false, x, y)},
-                { "7", (int x, int y) => new Tile(TileType.NUMBER, 7, false, x, y)},
-                { "8", (int x, int y) => new Tile(TileType.NUMBER, 8, false, x, y)},
+                { "A", (int x, int y) => new Tile(TileType.FLAG, null, x, y)},
+                { "B", (int x, int y) => new Tile(TileType.FLAG, null,  x, y)},
+                { "null", (int x, int y) => new Tile(TileType.UNKNOWN, null, x, y)},
+                { "0", (int x, int y) => new Tile(TileType.NUMBER, 0, x, y)},
+                { "1", (int x, int y) => new Tile(TileType.NUMBER, 1, x, y)},
+                { "2", (int x, int y) => new Tile(TileType.NUMBER, 2, x, y)},
+                { "3", (int x, int y) => new Tile(TileType.NUMBER, 3, x, y)},
+                { "4", (int x, int y) => new Tile(TileType.NUMBER, 4, x, y)},
+                { "5", (int x, int y) => new Tile(TileType.NUMBER, 5, x, y)},
+                { "6", (int x, int y) => new Tile(TileType.NUMBER, 6, x, y)},
+                { "7", (int x, int y) => new Tile(TileType.NUMBER, 7, x, y)},
+                { "8", (int x, int y) => new Tile(TileType.NUMBER, 8, x, y)},
             };
 
 
@@ -56,17 +56,6 @@ namespace FlagsSolver.Util
             return deserializedTiles;
         }
 
-        public static List<string> SerialzeTiles(ImmutableList<Tile> tiles)
-        {
-            List<string> serializedTiles = new List<string>();
-            tiles.ForEach(s =>
-            {
-                serializedTiles.Add(TileUtil.SerializeTile(s));
-            });
-
-            return serializedTiles;
-        }
-
         private static Tile DeserializeTile(string tileString, int x, int y)
         {
             if (tileString == null){
@@ -80,16 +69,5 @@ namespace FlagsSolver.Util
 
             return DESERIALIZE_MAP[tileString](x, y);
         }
-
-        private static string SerializeTile(Tile tile)
-        {
-            if (tile.Type.Equals(TileType.FLAG))
-            {
-                return "F";
-            }
-
-            return tile.Value == null ? null : tile.Value.GetValueOrDefault().ToString();
-        }
-
     }
 }

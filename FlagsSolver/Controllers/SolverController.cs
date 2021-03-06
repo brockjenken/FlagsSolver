@@ -14,6 +14,7 @@ namespace FlagsSolver.Controllers
     [Route("[controller]")]
     public class SolverController : ControllerBase
     {
+        private static string SOLVE_EVENT = "solveEvent";
         private readonly ILogger<SolverController> _logger;
 
         public SolverController(ILogger<SolverController> logger)
@@ -24,7 +25,7 @@ namespace FlagsSolver.Controllers
         [HttpPost]
         public BoardSolverResponse Solve(BoardSolverRequest request)
         {
-            _logger.LogInformation(String.Format("Solver request with: {0}", request));
+            _logger.LogInformation(String.Format("event={0}; status=started; request={1}"),SOLVE_EVENT, request);
 
             Board board = new Board(
                 request.Height,
@@ -34,6 +35,8 @@ namespace FlagsSolver.Controllers
             Board solvedBoard = BoardSolver.SolveBoard(board);
 
             Tuple<List<Coordinate>, List<Coordinate>> results = TileUtil.GetCoordinatesOfChanges(board, solvedBoard);
+            
+            _logger.LogInformation(String.Format("event={0}; status=success; request={1}"),SOLVE_EVENT, request);
 
             return new BoardSolverResponse(results.Item1, results.Item2);
         }

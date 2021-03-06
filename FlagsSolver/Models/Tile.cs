@@ -9,13 +9,14 @@ namespace FlagsSolver.Models
 
         public int X {get;}
         public int Y {get;}
-        public Tile(TileType type, Nullable<int> value, bool solved, int x, int y)
+        public Tile(TileType type, Nullable<int> value, int x, int y)
         {
             Type = type;
             Value = value;
-            Solved = solved;
+            Solved = false;
             X = x;
             Y = y;
+
         }
 
         public string toString()
