@@ -63,7 +63,12 @@ namespace FlagsSolver.Util
 
         private static string SerializeTile(Tile tile)
         {
-            return tile.Value == null ? "null" : tile.Value.GetValueOrDefault().ToString();
+            if (tile.Type.Equals(TileType.FLAG))
+            {
+                return "F";
+            }
+
+            return tile.Value == null ? null : tile.Value.GetValueOrDefault().ToString();
         }
     }
 }

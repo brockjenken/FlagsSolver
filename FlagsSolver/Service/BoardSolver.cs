@@ -2,12 +2,12 @@
 using System.Linq;
 using System.Collections.Generic;
 using FlagsSolver.Models;
+using Microsoft.Extensions.Logging;
 
 namespace FlagsSolver.Service
 {
     public class BoardSolver
     {
-
         /// <summary>This method will iteratively look through each tile and check to see if it can 
         /// solve the surrounding tiles. If a change is detected, the method will loop again and re-evaluate.
         ///  While the board is solved by reference, it is also returned for stylistic convenience.
@@ -19,6 +19,8 @@ namespace FlagsSolver.Service
             List<Tile> scanTiles = new List<Tile>(board.Tiles)
                 .Where(t => t.Type == TileType.NUMBER)
                 .ToList();
+
+            System.Console.WriteLine(board.ToString());
 
             bool boardChanged = true;
             while (boardChanged)
@@ -48,7 +50,9 @@ namespace FlagsSolver.Service
                 return false;
             }
 
-            ImmutableList<Tile> adjacentTiles = board.GetAdjacentTiles(tile.X, tile.Y);
+            ImmutableList<Tile> adjacentTiles = board.GetAdjacentTiles(tile.X, tile.Y)
+                                                        .Where(t => t != null)
+                                                        .ToImmutableList();
 
             int tileCount = tile.Value ?? default(int);
             int flagCount = adjacentTiles.AsEnumerable().Count( t => t.Type == TileType.FLAG);

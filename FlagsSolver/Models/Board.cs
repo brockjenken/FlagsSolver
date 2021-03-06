@@ -25,7 +25,7 @@ namespace FlagsSolver.Models
 
         public Tile GetTile(int x, int y)
         {
-            if (x < 0 || x > Height - 1 || y < 0 || y > Width)
+            if (x < 0 || x > Height - 1 || y < 0 || y > Width - 1)
             {
                 return null;
             }
@@ -57,6 +57,11 @@ namespace FlagsSolver.Models
             }
 
             return tiles.ToImmutableList();
+        }
+
+        public string toString()
+        {
+            return String.Format("Height={0}, Width={1}, Tiles={2}", Height, Width, Tiles);
         }
     }
 }
