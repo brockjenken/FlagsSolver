@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.ComponentModel;
+using System;
 using System.Collections.Generic;
 using FlagsSolver.DTOs;
 using FlagsSolver.Models;
@@ -21,7 +22,7 @@ namespace FlagsSolver.Controllers
         }
 
         [HttpPost]
-        public IEnumerable<string> Solve(BoardSolverRequest request)
+        public BoardSolverResponse Solve(BoardSolverRequest request)
         {
             _logger.LogInformation(String.Format("Solver request with: {0}", request));
 
@@ -32,7 +33,9 @@ namespace FlagsSolver.Controllers
 
             Board solvedBoard = BoardSolver.SolveBoard(board);
 
-            return TileUtil.SerialzeTiles(solvedBoard.Tiles);
+            Tuple<List<Coordinate>, List<Coordinate>> results = TileUtil.GetCoordinatesOfChanges(board, solvedBoard);
+
+            return new BoardSolverResponse(results.Item1, results.Item2);
         }
     }
 }

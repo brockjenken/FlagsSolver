@@ -20,8 +20,6 @@ namespace FlagsSolver.Service
                 .Where(t => t.Type == TileType.NUMBER)
                 .ToList();
 
-            System.Console.WriteLine(board.ToString());
-
             bool boardChanged = true;
             while (boardChanged)
             {
