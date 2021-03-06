@@ -19,7 +19,7 @@ namespace FlagsSolver.Models
 
         }
 
-        public string toString()
+        public override string ToString()
         {
             return String.Format("Type={0}, Value={1}, Solved={2}, X={3}, Y={4}", Type, Value, Solved, X, Y);
         }

@@ -59,14 +59,9 @@ namespace FlagsSolver.Models
             return tiles.ToImmutableList();
         }
 
-        public string toString()
+        public override string ToString()
         {
             return String.Format("Height={0}, Width={1}, Tiles={2}", Height, Width, Tiles);
         }
     }
 }
-
-
-// {"board" : ["null, "null", ..., "1", "3", "A", ..., "0", "B"], "N": 48, "M": 48}
-
-// null 0 1 2 3 4 5 6 7 8 A B
