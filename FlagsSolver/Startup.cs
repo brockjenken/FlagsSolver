@@ -33,7 +33,7 @@ namespace FlagsSolver
             {
                 app.UseDeveloperExceptionPage();
             }
-≈
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
