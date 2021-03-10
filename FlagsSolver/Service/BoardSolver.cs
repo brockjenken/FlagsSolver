@@ -59,7 +59,7 @@ namespace FlagsSolver.Service
 
             bool boardChanged = false;
 
-            if (remainingFlagCount == 0)
+            if (remainingFlagCount == 0 && tile.Value != 0)
             {
                 boardChanged = true;
                 adjacentTiles.ForEach(t => {
