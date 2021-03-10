@@ -36,7 +36,7 @@ namespace FlagsSolver.Util
                 .ToList();
 
             List<Coordinate> nonFlags = solvedTiles.AsEnumerable()
-                .Where(t => t.Type == TileType.UNKNOWN)
+                .Where(t => t.Type == TileType.NUMBER)
                 .Select(t => new Coordinate(t.X, t.Y))
                 .ToList();
             
