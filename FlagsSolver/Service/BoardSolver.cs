@@ -17,7 +17,7 @@ namespace FlagsSolver.Service
         public static Board SolveBoard(Board board)
         {
             List<Tile> scanTiles = new List<Tile>(board.Tiles)
-                .Where(t => t.Type == TileType.NUMBER)
+                .Where(t => t.Type == TileType.NUMBER && t.Value != 0)
                 .ToList();
 
             bool boardChanged = true;
@@ -59,7 +59,7 @@ namespace FlagsSolver.Service
 
             bool boardChanged = false;
 
-            if (remainingFlagCount == 0 && tile.Value != 0)
+            if (remainingFlagCount == 0)
             {
                 boardChanged = true;
                 adjacentTiles.ForEach(t => {
