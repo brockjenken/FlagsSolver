@@ -17,7 +17,7 @@ namespace FlagsSolver.Service
         public static Board SolveBoard(Board board)
         {
             List<Tile> scanTiles = new List<Tile>(board.Tiles)
-                .Where(t => t.Type == TileType.NUMBER && t.Value != 0)
+                .Where(t => t.Type == TileType.NUMBER && t.Value.Value != 0)
                 .ToList();
 
             bool boardChanged = true;
