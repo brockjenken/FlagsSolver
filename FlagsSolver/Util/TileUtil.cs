@@ -48,8 +48,8 @@ namespace FlagsSolver.Util
             List<Tile> deserializedTiles = new List<Tile>();
             for (int i = 0; i < rawTiles.Count; i++)
             {
-                int x = i % width;
-                int y = (int) Math.Floor((decimal) i / height);
+                int x = (int) Math.Floor((decimal) i / height);
+                int y = i % width;
                 deserializedTiles.Add(TileUtil.DeserializeTile(rawTiles[i], x, y));
             }
 
